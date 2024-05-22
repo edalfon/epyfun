@@ -3,6 +3,8 @@ import epyfun
 import os
 import chardet
 
+from typing import Union
+
 
 def get_latest_file(folder_path: str) -> str:
     """
@@ -64,7 +66,7 @@ def create_dir(path: str) -> None:
             os.makedirs(directory_path)
 
 
-def convert_to_utf8(file_path: str, outputfile_path: str | None = None) -> str:
+def convert_to_utf8(file_path: str, outputfile_path: Union[str, None] = None) -> str:
     """
     Convert the content of a text file to UTF-8 encoding.
 
