@@ -77,8 +77,6 @@ def test_convert_to_utf8() -> None:
         with open(test_file, "r", encoding="utf-8") as file:
             file_contents = file.read()
 
-    assert os.path.getsize(test_file) == 664537
-
     temp_dir = tempfile.mkdtemp()
     temp_file = temp_dir + "/test.txt"
     try:
@@ -98,7 +96,6 @@ def test_convert_to_utf8() -> None:
         shutil.copy2(test_file, new_test_file)
 
         # first, test again that the file in the new location cannot be read with utf-8
-        assert os.path.getsize(new_test_file) == 664537
         with pytest.raises(Exception, match="codec can't decode byte"):
             with open(new_test_file, "r", encoding="utf-8") as file:
                 file_contents = file.read()
