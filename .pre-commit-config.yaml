@@ -8,38 +8,45 @@ repos:
         types: [python]
         require_serial: true
         args: ["-c", "bandit.yml"]
+        exclude: ^tests/tests_resources/
       - id: black
         name: black
         entry: black
         language: system
         types: [python]
         require_serial: true
+        exclude: ^tests/tests_resources/
       - id: check-added-large-files
         name: Check for added large files
         entry: check-added-large-files
         language: system
+        exclude: ^tests/tests_resources/
       - id: check-toml
         name: Check Toml
         entry: check-toml
         language: system
         types: [toml]
+        exclude: ^tests/tests_resources/
       - id: check-yaml
         name: Check Yaml
         entry: check-yaml
         language: system
         types: [yaml]
+        exclude: ^tests/tests_resources/
       - id: darglint
         name: darglint
         entry: darglint
         language: system
         types: [python]
         stages: [manual]
+        exclude: ^tests/tests_resources/
       - id: end-of-file-fixer
         name: Fix End of Files
         entry: end-of-file-fixer
         language: system
         types: [text]
         stages: [commit, push, manual]
+        exclude: ^tests/tests_resources/
       - id: flake8
         name: flake8
         entry: flake8
@@ -47,6 +54,7 @@ repos:
         types: [python]
         require_serial: true
         args: [--darglint-ignore-regex, .*]
+        exclude: ^tests/tests_resources/
       - id: isort
         name: isort
         entry: isort
@@ -54,6 +62,7 @@ repos:
         language: system
         types_or: [cython, pyi, python]
         args: ["--filter-files"]
+        exclude: ^tests/tests_resources/
       - id: pyupgrade
         name: pyupgrade
         description: Automatically upgrade syntax for newer versions.
@@ -61,6 +70,7 @@ repos:
         language: system
         types: [python]
         args: [--py37-plus]
+        exclude: ^tests/tests_resources/
       - id: trailing-whitespace
         name: Trim Trailing Whitespace
         entry: trailing-whitespace-fixer
