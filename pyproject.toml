@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "epyfun"
-version = "0.3.2"
+version = "0.3.3"
 description = "epyfun"
 authors = ["Eduardo Alfonso-Sierra <edalfon@gmail.com>"]
 license = "MIT"
