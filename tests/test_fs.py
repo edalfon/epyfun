@@ -1,15 +1,15 @@
 # pytest -s tests/ --cov=epyfun
 
+import hashlib
+import os
+import shutil
+import tempfile
+
 import pytest
 
-from epyfun.fs import get_latest_file
-from epyfun.fs import create_dir
 from epyfun.fs import convert_to_utf8
-
-import tempfile
-import shutil
-import os
-import hashlib
+from epyfun.fs import create_dir
+from epyfun.fs import get_latest_file
 
 
 def test_get_latest_file() -> None:
@@ -74,7 +74,7 @@ def test_convert_to_utf8() -> None:
 
     # it should fail trying to read this file
     with pytest.raises(Exception, match="codec can't decode byte"):
-        with open(test_file, "r", encoding="utf-8") as file:
+        with open(test_file, encoding="utf-8") as file:
             file_contents = file.read()
 
     temp_dir = tempfile.mkdtemp()
@@ -83,7 +83,7 @@ def test_convert_to_utf8() -> None:
         # after calling convert_to_utf8, you now should be able to read the contents
         # of the file, saved in a new location
         convert_to_utf8(test_file, temp_file)
-        with open(temp_file, "r", encoding="utf-8") as file:
+        with open(temp_file, encoding="utf-8") as file:
             file_contents = file.read().replace("\n", "").replace("\r", "")
             assert (
                 hashlib.sha256(file_contents.encode("utf-8")).hexdigest()
@@ -97,12 +97,12 @@ def test_convert_to_utf8() -> None:
 
         # first, test again that the file in the new location cannot be read with utf-8
         with pytest.raises(Exception, match="codec can't decode byte"):
-            with open(new_test_file, "r", encoding="utf-8") as file:
+            with open(new_test_file, encoding="utf-8") as file:
                 file_contents = file.read()
 
         # now test that it can convert the encoding and replace the file
         convert_to_utf8(new_test_file)
-        with open(new_test_file, "r", encoding="utf-8") as file:
+        with open(new_test_file, encoding="utf-8") as file:
             file_contents = file.read().replace("\n", "").replace("\r", "")
             assert (
                 hashlib.sha256(file_contents.encode("utf-8")).hexdigest()

@@ -1,14 +1,15 @@
-import epyfun
+"""Some file-system related functions."""
 
 import os
+from typing import Union
+
 import chardet
 
-from typing import Union
+import epyfun
 
 
 def get_latest_file(folder_path: str) -> str:
-    """
-    Retrieve the path of the latest file in a specified folder.
+    """Retrieve the path of the latest file in a specified folder.
 
     Args:
         folder_path (str): The path to the folder containing the files.
@@ -37,18 +38,16 @@ def get_latest_file(folder_path: str) -> str:
 
 
 def create_dir(path: str) -> None:
-    """
-    Create a directory at the specified path if it does not already exist.
+    """Create a directory at the specified path if it does not already exist.
 
-    This function checks if the directory already exists; if it does, it takes no action.
-    If the directory does not exist, it creates the directory along with any necessary
-    parent directories. If the path has an extension, it is assumed to be a file, and the directory is created based on the path's directory component.
+    This function checks if the directory already exists; if it does, it takes
+    no action. If the directory does not exist, it creates the directory along
+    with any necessary parent directories. If the path has an extension, it is
+    assumed to be a file, and the directory is created based on the path's
+    directory component.
 
     Args:
         path (str): The path to the directory to be created.
-
-    Returns:
-        None
     """
     # this function just wants to make sure the directory exists, so if the path
     # already exists, either as a file or a directory, do nothing at all
@@ -67,10 +66,8 @@ def create_dir(path: str) -> None:
 
 
 def convert_to_utf8(file_path: str, outputfile_path: Union[str, None] = None) -> str:
-    """
-    Convert the content of a text file to UTF-8 encoding.
+    """Convert the content of a text file to UTF-8 encoding.
 
-    Parameters:
     - file_path (str): The path to the input file.
     - outputfile_path (str, optional): The path to the output file. If not provided,
       the input file will be overwritten with its content converted to UTF-8.
@@ -82,10 +79,10 @@ def convert_to_utf8(file_path: str, outputfile_path: Union[str, None] = None) ->
     - The function uses the `chardet` library to automatically detect the encoding
       of the input file.
     - If the detected encoding is not UTF-8, the file's content is decoded and then
-      re-encoded in UTF-8 before writing to the output file or overwriting the input file.
+      re-encoded in UTF-8 before writing to the output file or overwriting the input
+      file.
     - If no output file path is provided, the input file will be overwritten.
     """
-
     with open(file_path, "rb") as file:
         raw_data = file.read()
         detected_encoding = chardet.detect(raw_data)["encoding"]
