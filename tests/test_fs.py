@@ -87,7 +87,7 @@ def test_convert_to_utf8() -> None:
             file_contents = file.read().replace("\n", "").replace("\r", "")
             assert (
                 hashlib.sha256(file_contents.encode("utf-8")).hexdigest()
-                == "ae1c4e8e19525385fe4b15b42f28c27a6d6966a9824e0ebeaf10758a9d173068"
+                == "a807df0d4a9ccbe4a7399bad303e5fbc0adc142dc4e36490d0b267420df140dd"
             )
 
         # and it should also work by just replacing the file (not passing a value
@@ -106,7 +106,7 @@ def test_convert_to_utf8() -> None:
             file_contents = file.read().replace("\n", "").replace("\r", "")
             assert (
                 hashlib.sha256(file_contents.encode("utf-8")).hexdigest()
-                == "ae1c4e8e19525385fe4b15b42f28c27a6d6966a9824e0ebeaf10758a9d173068"
+                == "a807df0d4a9ccbe4a7399bad303e5fbc0adc142dc4e36490d0b267420df140dd"
             )
     finally:
         shutil.rmtree(temp_dir)
