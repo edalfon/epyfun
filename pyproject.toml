@@ -20,6 +20,7 @@ python = "^3.9"
 chardet = ">=5.2.0"
 plotly = ">=5.18.0"
 pandas = ">=2.1.4"
+pandas-stubs = "^2.2.2.240514"
 
 [tool.poetry.group.dev.dependencies]
 Pygments = ">=2.10.0"
