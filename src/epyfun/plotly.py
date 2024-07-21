@@ -13,7 +13,7 @@ def splom(
     dimensions: Union[list[str], None] = None,
     selected_marker_opacity: float = 0.9,
     selected_marker_color: str = "green",
-    unselected_marker_opacity=0.1,
+    unselected_marker_opacity: float = 0.1,
     showupperhalf: bool = False,
     diagonal_visible: bool = False,
     **kwargs: Any
@@ -49,9 +49,11 @@ def splom(
             include in the SPLOM. If None, all columns from the data frame are
             used. Defaults to None.
         selected_marker_opacity (float): Opacity of highlighted points
-            when a data point is selected in another subplot. Defaults to 0.7.
+            when a data point is selected in another subplot. Defaults to 0.9.
         selected_marker_color (str): Color of highlighted points.
             Defaults to "green".
+        unselected_marker_opacity (float): Opacity of unselected points
+            when a data point is selected in another subplot. Defaults to 0.1.
         showupperhalf (bool): Controls whether to display the upper
             triangle of the scatter matrix (default behavior). If True, only
             the lower triangle is displayed. Defaults to False.
