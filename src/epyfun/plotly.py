@@ -11,8 +11,9 @@ from plotly.graph_objects import Figure
 def splom(
     data_frame: pd.DataFrame,
     dimensions: Union[list[str], None] = None,
-    selected_marker_opacity: float = 0.7,
+    selected_marker_opacity: float = 0.9,
     selected_marker_color: str = "green",
+    unselected_marker_opacity=0.1,
     showupperhalf: bool = False,
     diagonal_visible: bool = False,
     **kwargs: Any
@@ -72,7 +73,7 @@ def splom(
     # Set default values for certain keyword arguments and
     # Combine default values with provided kwargs
     default_kwargs = {
-        "opacity": 0.3,
+        "opacity": 0.35,
         "dimensions": dimensions,
         "hover_data": data_frame.columns,
         # "height": 700,
@@ -90,6 +91,7 @@ def splom(
         dict(
             selected_marker_color=selected_marker_color,
             selected_marker_opacity=selected_marker_opacity,
+            unselected_marker_opacity=unselected_marker_opacity,
             diagonal=dict(visible=diagonal_visible),
             showupperhalf=showupperhalf,
         ),
